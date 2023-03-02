@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    background: conic-gradient(from -90deg at top left, black, white);
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 81vh;
+
+}
+.container{
+    height: 300px;
+    width: 617px;
+    background: url(timer.png) ;
+    background-repeat: no-repeat;
+  background-size: auto;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+.timerbox{
+    height: 90px;
+    width: 250px;
+    background:linear-gradient(rgb(80,80,80) rgb(175,170,168) );
+    position: relative;
+    margin-top: -30px;
+    margin-left: -70px;
+    border-radius: 10px;
+}
