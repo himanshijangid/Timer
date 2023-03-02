@@ -39,7 +39,7 @@ clockRunning = () => {
     let minutes = timeElapsed.getUTCMinutes();
     let seconds = timeElapsed.getUTCSeconds();
     let milliseconds = timeElapsed.getUTCMilliseconds();
-     milliseconds = Math.floor(milliSeconds/10);
+     milliseconds = Math.floor(milliseconds/10);
 
      document.querySelector("#timer-display").textContent =
      (minutes = minutes < 10 ? '0' + minutes:minutes)+":"+(seconds = seconds < 10? '0' + seconds:seconds)+":"+(milliseconds=milliseconds<10?'0'+milliseconds:milliseconds)
