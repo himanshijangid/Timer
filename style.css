@@ -14,9 +14,9 @@ body{
 
 }
 .container{
-    height: 300px;
-    width: 617px;
-    background: url(timer.png) ;
+    /* height: 300px;
+    width: 617px; */
+    /* background: url(timer.png) ; */
     background-repeat: no-repeat;
   background-size: auto;
   display: flex;
