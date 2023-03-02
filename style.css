@@ -26,10 +26,44 @@ body{
 }
 .timerbox{
     height: 90px;
-    width: 250px;
-    background:linear-gradient(rgb(80,80,80) rgb(175,170,168) );
-    position: relative;
+    width: 260px;
+    background:rgb(58,58,58);
+    position: fixed;
     margin-top: -30px;
     margin-left: -70px;
     border-radius: 10px;
+    display: flex;
+}
+.timer{
+   background-color: black;
+   padding: 15px;
+   margin:  10px 5px 10px 10px;
+   color:rgb(0,242,0) ;
+   user-select: none;
+
+   
+  
+
+}
+button{
+    padding: 10px 9px;
+    cursor: pointer;
+    margin:3px 0px 0px 0px;
+}
+#stop_start{
+    background-color: green;
+    border-radius: 10px;
+    /* color: #fff; */
+    font-weight: bolder;  border:rgb(6, 75, 6) 1.5px solid;
+}
+#reset{
+    padding: 10px 22.5px;
+    background-color: rgba(255, 0, 0, 0.607);
+    border-radius: 10px;
+    /* color: #fff; */
+    font-weight: bolder;
+    border:rgb(136, 5, 5) 1.5px solid;
+}
+button:hover{
+    
 }

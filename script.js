@@ -1,74 +1,55 @@
-document.querySelector("#input").addEventListener("keydown", (event) => {
-    if (event.key ==="Enter"){
-        const input = document.querySelector("#input");
-        addItem(input.value);
+var timeBegan = null; //did the clock start?
+var timeStopped = null; // at what time was the timer stopped?
+var stoppedDuration = 0 ; //how long the timer stopped?
+var startInterval = null; //this is needed to sto the startInterval () method 
+var flag = false; // to control the start/stop of the timer 
+
+document.querySelector("#stop_start").addEventListener("click", () => {
+    if (!flag){
+        startTimer();
+        flag = true ;
+    }else{
+        stopTimer();
+        flag = false;
     }
-});
+})
 
-document.querySelector("#add_item").addEventListener("click", () => {
-    const input = document.querySelector("#input");
-    addItem(input.value);
-});
-addItem  = (input) => {
-    const item = document.createElement("div");
-    const allItem = document.createElement("div");
-    allItem.className="allitem"
-    const text = document.createElement("p");
-    
-    item.className = "item";
-    text.textContent = input;
-    
-    
-    const checkboxIcon = document.createElement("i");
-    checkboxIcon.innerHTML = '<i class="fa-regular fa-circle-check"></i>'
-    checkboxIcon.className ="check-button";
-    checkboxIcon.style.color="red"
-    
-    allItem.appendChild(checkboxIcon);
+document.querySelector("#reset").addEventListener("click", () => {
+    resetTimer();
 
-    // checkboxIcon.addEventListener("click" , () =>{
-    //     checkboxIcon.style.color="green"
-    // } );
-    checkboxIcon.addEventListener("click", () =>{
-        let color = checkboxIcon.style.color;
-        if(color=='red'){
-            checkboxIcon.style.color='green';
-            item.style.textDecoration="line-through";
-        }
-        else{
-            
-            checkboxIcon.style.color='red';
-            item.style.textDecoration="none";
-        }
-        
-    });
-    
-    // checkboxIcon.addEventListener("click" , checkbox()
-    // );
-   // function checkbox (){
-    //     if(checkboxIcon.style.color == "red"){
-    //         checkboxIcon.style.color = "green";
-    //     }if (checkboxIcon.style.color == "green"){
-    //         checkboxIcon.style.color = "red";
-    //     }
-    // }
-     
-    
-    const deleteIcon = document.createElement("i");
-    deleteIcon.innerHTML = '<i class="fa-solid fa-trash-can"></i>'
-    deleteIcon.className = "trash-button";
-    allItem.appendChild(deleteIcon);
+})
 
-    deleteIcon.addEventListener("click",() => {
-        item.remove();
+startTimer = () => {
+    if (timeBegan === null)
+    timeBegan = new Date();
 
-    })
-    allItem.appendChild(deleteIcon);
-    item.appendChild (text);
-    item.appendChild(allItem);
+    if (timeStopped !== null)
+    stoppedDuration += (new Date()- timeStopped);
 
-    document.querySelector("#to-do-list").appendChild(item);
-    document.querySelector("#input").value = "";
+    startInterval = setInterval(clockRunning , 10);
+}
 
+stopTimer = () => {
+    timeStopped = new Date();
+    clearInterval(startInterval);
+}
+clockRunning = () => {
+    let currentTime = new Date();
+    let timeElapsed = new Date (currentTime  - timeBegan - stoppedDuration)
+    let minutes = timeElapsed.getUTCMinutes();
+    let seconds = timeElapsed.getUTCSeconds();
+    let milliseconds = timeElapsed.getUTCMilliseconds();
+     milliseconds = Math.floor(milliSeconds/10);
 
+     document.querySelector("#timer-display").textContent =
+     (minutes = minutes < 10 ? '0' + minutes:minutes)+":"+(seconds = seconds < 10? '0' + seconds:seconds)+":"+(milliseconds=milliseconds<10?'0'+milliseconds:milliseconds)
+
+}
+resetTimer = () => {
+    clearInterval(startInterval);
+    timeBegan = null;
+    timeStopped = null ;
+    stoppedDuration = 0 ;
+    document.querySelector ("#timer-display").innerHTML = "00:00:00";
+    flag = false;
 }
